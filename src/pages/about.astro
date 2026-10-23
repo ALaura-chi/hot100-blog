@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/paths';
+---
+<BaseLayout title="关于" active="about"><div class="about-content"><header class="simple-header"><div class="eyebrow">ABOUT / THE NOTEBOOK</div><h1>你好，我是 ALaura。</h1><p>把练习变成可以回看的笔记。</p></header><div class="prose"><h2>为什么记录</h2><p>一道题的价值，不只在于得到答案。把关键观察、算法选择和踩过的坑写下来，下次再遇见相似问题时，就多了一条可以走的路。</p><h2>如何使用这份笔记</h2><p>从目录选择一道题，先打开力扣原题独立思考，再对照思路与代码。五篇样例笔记提供了 Java 实现和本地测试，其余题目明确标为待补充。样例笔记不代表个人已经完成了相应练习，也没有虚构力扣通过记录。</p><h2>这份网页的来处</h2><p>页面的双栏索引、绿色主题和长文阅读形式，参考了 <a href="https://slantedbookshelf.github.io/Blog/posts/hot_100/" target="_blank" rel="noopener noreferrer">SlantedBookshelf 的 hot_100 思路</a>。这里重新实现页面和交互，采用自己的样例说明与代码。</p><h2>持续更新</h2><p>题目按 17 个分类组织，每题拥有独立笔记和稳定链接。以后补充思路、改进代码、记录真实练习结果，都可以从一篇 Markdown 开始。</p><p><a class="text-link" href={withBase('posts/hot_100/')}>去看看 Hot 100 笔记 →</a></p></div></div></BaseLayout>

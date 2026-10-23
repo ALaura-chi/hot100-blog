@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getProblems } from '../lib/problems';
+import { categories } from '../data/categories';
+import { withBase } from '../lib/paths';
+const problems = await getProblems();
+const notes = problems.filter(problem=>problem.data.noteReady);
+---
+<BaseLayout title="首页" active="home">
+  <section class="home-hero"><div class="eyebrow">ALaura / LEARNING IN PUBLIC</div><h1>把思路写下来，<br/>让每一次练习<span>有迹可循。</span></h1><p>这里是我的算法笔记。沿着 Hot 100 的分类，整理关键观察、代码与易错点，在复盘中慢慢建立自己的解题路径。</p><a class="primary-link" href={withBase('posts/hot_100/')}>打开 Hot 100 笔记 <span aria-hidden="true">↗</span></a></section>
+  <section class="home-content"><div class="section-label"><h2>刷题手记</h2><span>01 / NOTES</span></div><a class="featured-note" href={withBase('posts/hot_100/')}><div><div class="article-meta"><time datetime="2026-10-23">2026/10/23</time><span>LeetCode</span></div><h3>hot_100 思路</h3><p>从哈希到动态规划，按主题串起 100 道经典题目。</p><div class="tags"><span>#算法</span><span>#数据结构</span></div></div><span class="featured-arrow" aria-hidden="true">↗</span></a>
+  <div class="home-stats"><div><strong>100</strong><span>经典题目</span></div><div><strong>17</strong><span>算法分类</span></div><div><strong>{notes.length.toString().padStart(2,'0')}</strong><span>样例笔记</span></div></div>
+  <div class="section-label"><h2>从一个分类开始</h2><a href={withBase('categories/')}>全部分类 ↗</a></div><div class="category-preview">{categories.slice(0,6).map(category=><a href={`${withBase('posts/hot_100/')}#category-${category.slug}`}><span>{category.name}</span><small>{problems.filter(p=>p.data.category===category.name).length} 题</small><b aria-hidden="true">↗</b></a>)}</div></section>
+</BaseLayout>

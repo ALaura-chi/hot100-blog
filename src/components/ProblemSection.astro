@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { difficultyLabels } from '../data/categories';
+interface Props { problem: CollectionEntry<'problems'> }
+const { problem } = Astro.props;
+const { problemId, title, difficulty, leetcode, noteReady } = problem.data;
+---
+<section id={`problem-${problemId}`} class:list={['problem-section',{pending:!noteReady}]} data-problem={problemId}>
+  <div class="problem-title-row"><h3><span class="problem-number">{problemId}、</span><a href={leetcode} target="_blank" rel="noopener noreferrer" aria-label={`${problemId}、${title}，在力扣打开`}>{title}</a></h3><span class={`difficulty-badge ${difficulty}`}>{difficultyLabels[difficulty]}</span></div>
+  <div class="note-state">{noteReady ? <span class="ready-state">样例题解 · Java</span> : <span>题解待补充</span>}<span class="study-state">未开始</span></div>
+  <div class="prose"><slot /></div>
+</section>

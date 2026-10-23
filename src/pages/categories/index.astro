@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categories } from '../../data/categories';
+import { getProblems } from '../../lib/problems';
+import { withBase } from '../../lib/paths';
+const problems = await getProblems();
+---
+<BaseLayout title="分类" active="categories"><header class="simple-header"><div class="eyebrow">TOPICS / 17 CATEGORIES</div><h1>按主题，重新理解。</h1><p>同类题目放在一起，更容易看见相通的思路。</p></header><div class="category-cards">{categories.map(category=><a href={`${withBase('posts/hot_100/')}#category-${category.slug}`}><span class="category-order">{String(category.order).padStart(2,'0')}</span><h2>{category.name}</h2><p>{problems.filter(p=>p.data.category===category.name).length} 道题目</p><span class="category-card-arrow" aria-hidden="true">↗</span></a>)}</div></BaseLayout>

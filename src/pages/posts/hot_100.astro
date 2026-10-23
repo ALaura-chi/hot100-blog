@@ -1,0 +1,31 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProblemIndex from '../../components/ProblemIndex.astro';
+import ProblemSection from '../../components/ProblemSection.astro';
+import { categories } from '../../data/categories';
+import { getProblems } from '../../lib/problems';
+import { withBase } from '../../lib/paths';
+const problems = await getProblems();
+const readyCount = problems.filter(problem => problem.data.noteReady).length;
+const rendered = await Promise.all(problems.map(async problem => ({problem, ...(await render(problem))})));
+---
+<BaseLayout title="hot_100 思路" active="article" article>
+  <div class="article-layout">
+    <ProblemIndex problems={problems}/>
+    <article class="article-body">
+      <header class="article-header">
+        <div class="article-meta"><time datetime="2026-10-23">2026/10/23</time><a href="https://leetcode.cn/studyplan/top-100-liked/" target="_blank" rel="noopener noreferrer">LeetCode</a></div>
+        <h1>hot_100<span>思路</span></h1>
+        <p class="article-description">个人整理的 hot_100 思路</p>
+        <div class="tags"><span>#LeetCode</span><span>#算法</span><span>#数据结构</span></div>
+        <p class="article-note">100 道题，17 个分类。先理解思路，再用代码验证。<span>已整理 {readyCount} 篇样例笔记，其余持续补充。</span></p>
+      </header>
+      {categories.map(category => <section class="category-section" aria-labelledby={`category-${category.slug}`}>
+        <h2 id={`category-${category.slug}`}>{category.name}</h2>
+        {rendered.filter(item=>item.problem.data.category===category.name).map(({problem,Content})=><ProblemSection problem={problem}><Content/></ProblemSection>)}
+      </section>)}
+      <nav class="article-pagination" aria-label="继续阅读"><a href={withBase('categories/')}><span>按主题复习</span><strong>浏览 17 个算法分类 <b aria-hidden="true">↗</b></strong></a><a href={withBase('about/')}><span>关于这份笔记</span><strong>在解题之后，记录思考 <b aria-hidden="true">↗</b></strong></a></nav>
+    </article>
+  </div>
+</BaseLayout>

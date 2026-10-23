@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { categories, difficultyLabels } from '../data/categories';
+interface Props { problems: CollectionEntry<'problems'>[] }
+const { problems } = Astro.props;
+---
+<aside class="problem-index" aria-label="题目索引">
+  <details id="problem-directory" open>
+    <summary><span>题目目录</span><span class="directory-count">100 题 <span class="chevron" aria-hidden="true">⌄</span></span></summary>
+    <div class="index-scroll">
+      <div class="index-heading">题目索引</div>
+      <nav aria-label="按分类浏览题目">
+        {categories.map(category => <div class="index-group">
+          <a class="index-category" href={`#category-${category.slug}`}>{category.name}</a>
+          <ul>{problems.filter(problem=>problem.data.category===category.name).map(problem=><li>
+            <a class:list={['problem-link',{active:problem.data.order===1}]} href={`#problem-${problem.data.problemId}`} data-problem-id={problem.data.problemId} aria-current={problem.data.order===1?'location':undefined} title={`${problem.data.problemId}、${problem.data.title} · ${difficultyLabels[problem.data.difficulty]}`}>
+              <span class="problem-link-text">{problem.data.problemId}、{problem.data.title}</span><span class={`difficulty-dot ${problem.data.difficulty}`} aria-label={difficultyLabels[problem.data.difficulty]}></span>
+            </a>
+          </li>)}</ul>
+        </div>)}
+      </nav>
+      <div class="difficulty-key"><span><i class="difficulty-dot easy"></i>简单</span><span><i class="difficulty-dot medium"></i>中等</span><span><i class="difficulty-dot hard"></i>困难</span></div>
+    </div>
+  </details>
+</aside>

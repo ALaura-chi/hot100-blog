@@ -1,0 +1,77 @@
+{
+  "runAt": "2026-10-22T18:40:12.158Z",
+  "screenshots": [
+    "local-1440x900-light.png",
+    "local-desktop-dark-middle.png",
+    "local-desktop-dark-bottom.png",
+    "local-1440x900-dark.png",
+    "local-768x1024-light.png",
+    "local-768x1024-dark.png",
+    "local-390x844-light.png",
+    "local-mobile-directory-open.png",
+    "local-mobile-long-code.png",
+    "local-390x844-dark.png",
+    "local-home-light.png"
+  ],
+  "tests": [
+    {
+      "name": "1440x900 light: page, theme, no overflow",
+      "passed": true
+    },
+    {
+      "name": "theme persists through refresh",
+      "passed": true
+    },
+    {
+      "name": "copy contains source code only (OS newlines normalized)",
+      "passed": true
+    },
+    {
+      "name": "scroll follows problem 200, then final problem 287",
+      "passed": true
+    },
+    {
+      "name": "1440x900 dark: page, theme, no overflow",
+      "passed": true
+    },
+    {
+      "name": "768x1024 light: page, theme, no overflow",
+      "passed": true
+    },
+    {
+      "name": "768x1024 dark: page, theme, no overflow",
+      "passed": true
+    },
+    {
+      "name": "390x844 light: page, theme, no overflow",
+      "passed": true
+    },
+    {
+      "name": "mobile directory opens, navigates and closes",
+      "passed": true
+    },
+    {
+      "name": "mobile long code scrolls inside its block",
+      "passed": true
+    },
+    {
+      "name": "keyboard opens menu and Escape restores focus",
+      "passed": true
+    },
+    {
+      "name": "390x844 dark: page, theme, no overflow",
+      "passed": true
+    },
+    {
+      "name": "blocked storage preserves usable theme switch",
+      "passed": true
+    },
+    {
+      "name": "all public routes respond",
+      "passed": true
+    }
+  ],
+  "issues": [],
+  "chromiumVersion": "155.0.8059.85",
+  "passed": true
+}

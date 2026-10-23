@@ -1,0 +1,10 @@
+node_modules/
+.astro/
+dist/
+.env*
+!.env.example
+.java-classes/
+.qa-profile/
+.npm-cache/
+*.log
+.DS_Store

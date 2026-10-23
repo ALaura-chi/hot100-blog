@@ -1,0 +1,51 @@
+{
+  "runAt": "2026-10-22T18:47:40.066Z",
+  "tests": [
+    {
+      "name": "mobile home has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "copy permission failure produces accessible feedback",
+      "passed": true
+    },
+    {
+      "name": "reduced motion keeps the canvas static after pointer and click",
+      "passed": true
+    },
+    {
+      "name": "scroll and grid interaction produce no task over 200ms",
+      "passed": true
+    },
+    {
+      "name": "development server updates the browser after a source edit",
+      "passed": true
+    },
+    {
+      "name": "content schema rejects an invalid difficulty",
+      "passed": true
+    },
+    {
+      "name": "build verifier rejects a missing problem anchor",
+      "passed": true
+    }
+  ],
+  "performance": {
+    "navigation": [
+      {
+        "domContentLoaded": 211.19999998807907,
+        "load": 211.39999997615814
+      }
+    ],
+    "longTasks": [
+      {
+        "start": 21.899999976158142,
+        "duration": 189
+      }
+    ],
+    "interactionLongTasks": []
+  },
+  "schemaFailure": "02:47:54 [vite] Re-optimizing dependencies because vite config has changed\n02:47:55 [content] Syncing content\n[InvalidContentEntryDataError] problems → 0001-two-sum data does not match collection schema.\n\n  difficulty: Invalid option: expected one of \"easy\"|\"medium\"|\"hard\"\n\n  Hint:\n    See https://docs.astro.build/en/guides/content-collections/ for more information on content schemas.\n  Error reference:\n    https://docs.astro.build/en/reference/errors/invalid-content-entry-data-error/\n  Location:\n    C:\\Users\\xy\\Documents\\ChatGPT\\实习项目仿作\\hot100-blog-rebuild-source\\src\\content\\problems\\0001-two-sum.md:0:0\n  Stack trace:\n    at getEntryData (C:\\Users\\xy\\Documents\\ChatGPT\\实习项目仿作\\hot100-blog-rebuild-source\\node_modules\\astro\\dist\\content\\utils.js:83:22)\n    at async eval (C:\\Users\\xy\\Documents\\ChatGPT\\实习项目仿作\\hot100-blog-rebuild-source\\node_modules\\astro\\dist\\content\\loaders\\glob.js:231:6)\nAssertion failed: !(handle->flags & UV_HANDLE_CLOSING), file src\\win\\async.c, line 76\r\n",
+  "anchorFailure": "Missing problem anchor: 1",
+  "passed": true
+}

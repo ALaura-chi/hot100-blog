@@ -1,0 +1,12 @@
+﻿Final workspace: D:\dev\hot100-blog-rebuild
+Independent repository: main; original project untouched.
+Node: v24.11.0
+npm: 11.6.1
+npm ci: passed using package-lock.json (offline npm cache)
+npm run ci: passed in this D-drive workspace
+Ignored generated paths:
+node_modules/
+dist/
+.astro/
+.java-classes/
+.env
