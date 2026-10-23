@@ -1,6 +1,6 @@
 # GitHub Pages 部署记录
 
-更新时间：2026-10-23。当前状态：本地成品与工作流已准备，尚未声称已经上线。用户指定使用 **ALaura-chi**，已完成浏览器授权并通过 GitHub API 核对账号。
+更新时间：2026-10-23。当前状态：首次 Actions 构建和部署成功，正在进行公网访问与第二次更新验收。用户指定使用 **ALaura-chi**，已完成浏览器授权并通过 GitHub API 核对账号。
 
 ## 固定配置
 
@@ -32,10 +32,10 @@
 
 | 证据 | 当前记录 |
 |---|---|
-| 仓库 URL | 尚未完成指定账号认证后的核验 |
-| 首次部署时间 / SHA | 待实际部署 |
-| 首次 Actions 运行 | 待实际部署 |
-| 公开访问验收 | 待实际部署 |
+| 仓库 URL | https://github.com/ALaura-chi/hot100-blog |
+| 首次部署时间 / SHA | 2026-10-23 09:25:02 +08:00；cd9f354d5564828076770d78a1cfbd089a4bbd84 |
+| 首次 Actions 运行 | https://github.com/ALaura-chi/hot100-blog/actions/runs/39883781926；build / deploy 均 success |
+| 公开访问验收 | 自动浏览器通过直连、HTTP 与 SOCKS5 代理访问 Pages 域名均超时；记录在 site-network.json。等待用户浏览器反馈与继续复测，不等同于部署失败 |
 | 第二次部署 | 待实际部署 |
 | 成功标签 | 待实际部署 |
 

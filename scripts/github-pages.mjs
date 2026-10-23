@@ -3,7 +3,7 @@
 import { spawnSync } from 'node:child_process';
 const owner='ALaura-chi', repo='hot100-blog';
 const mode=process.argv[2] || 'status';
-if(!['status','create','pages','runs'].includes(mode))throw new Error('Use status, create, pages or runs');
+if(!['status','create','pages','runs','watch','health'].includes(mode))throw new Error('Use status, create, pages, runs, watch or health');
 const credentials=spawnSync('git',['credential','fill'],{
  input:`protocol=https\nhost=github.com\nusername=${owner}\n\n`,encoding:'utf8',timeout:15000,windowsHide:true,
  env:{...process.env,GIT_TERMINAL_PROMPT:'0',GCM_INTERACTIVE:'Never'},
@@ -36,4 +36,36 @@ if(mode==='runs'){
  if(!repository)throw new Error('Repository not found.');
  const result=await api(`/repos/${owner}/${repo}/actions/runs?per_page=3`);
  console.log(JSON.stringify(result.workflow_runs.map(run=>({id:run.id,url:run.html_url,status:run.status,conclusion:run.conclusion,sha:run.head_sha})),null,2));
+}
+if(mode==='watch'){
+ if(!repository)throw new Error('Repository not found.');
+ const expectedSha=process.argv[3] || spawnSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).stdout.trim();
+ for(let attempt=0;attempt<40;attempt++){
+  const result=await api(`/repos/${owner}/${repo}/actions/runs?branch=main&per_page=10`);
+  const run=result.workflow_runs.find(run=>run.head_sha===expectedSha);
+  if(run){
+   console.log(JSON.stringify({id:run.id,url:run.html_url,status:run.status,conclusion:run.conclusion,sha:run.head_sha,createdAt:run.created_at,updatedAt:run.updated_at}));
+   if(run.status==='completed'){
+    const jobs=await api(`/repos/${owner}/${repo}/actions/runs/${run.id}/jobs`);
+    console.log(JSON.stringify(jobs.jobs.map(job=>({name:job.name,conclusion:job.conclusion,url:job.html_url})),null,2));
+    if(run.conclusion!=='success')throw new Error('The deployment workflow failed; inspect the reported run.');
+    break;
+   }
+  }else console.log('Waiting for the matching main workflow...');
+  if(attempt===39)throw new Error('Workflow did not finish within the polling window.');
+  await new Promise(resolve=>setTimeout(resolve,15000));
+ }
+}
+if(mode==='health'){
+ const pages=await api(`/repos/${owner}/${repo}/pages`);
+ const report={checkedAt:new Date().toISOString(),site:{url:pages.html_url,status:pages.status,buildType:pages.build_type,httpsEnforced:pages.https_enforced},responses:[]};
+ await Promise.all(['','posts/hot_100/','problems.json'].map(async route=>{
+  const url=new URL(route,pages.html_url);url.searchParams.set('verification',String(Date.now()));
+  try{
+   const response=await fetch(url,{signal:AbortSignal.timeout(20000)});const content=await response.text();
+   report.responses.push({route,status:response.status,title:content.match(/<title>(.*?)<\/title>/)?.[1],problemSections:(content.match(/data-problem="\d+"/g)||[]).length,updateMarker:content.includes('复盘补记')});
+  }catch(error){report.responses.push({route,error:String(error)});}
+ }));
+ console.log(JSON.stringify(report,null,2));
+ if(report.responses.some(item=>item.status!==200))process.exitCode=2;
 }

@@ -1,0 +1,17 @@
+{
+  "runAt": "2026-10-23T01:29:33.171Z",
+  "results": [
+    {
+      "proxy": "direct",
+      "error": "TimeoutError: page.goto: Timeout 18000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://alaura-chi.github.io/hot100-blog/posts/hot_100/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    {
+      "proxy": "http://127.0.0.1:7890",
+      "error": "TimeoutError: page.goto: Timeout 18000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://alaura-chi.github.io/hot100-blog/posts/hot_100/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    {
+      "proxy": "socks5://127.0.0.1:7890",
+      "error": "TimeoutError: page.goto: Timeout 18000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://alaura-chi.github.io/hot100-blog/posts/hot_100/\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    }
+  ]
+}
