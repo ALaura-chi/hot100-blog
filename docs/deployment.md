@@ -35,8 +35,8 @@
 | 仓库 URL | https://github.com/ALaura-chi/hot100-blog |
 | 首次部署时间 / SHA | 2026-10-23 09:25:02 +08:00；cd9f354d5564828076770d78a1cfbd089a4bbd84 |
 | 首次 Actions 运行 | https://github.com/ALaura-chi/hot100-blog/actions/runs/39883781926；build / deploy 均 success |
-| 公开访问验收 | 自动浏览器通过直连、HTTP 与 SOCKS5 代理访问 Pages 域名均超时；记录在 site-network.json。等待用户浏览器反馈与继续复测，不等同于部署失败 |
-| 第二次部署 | 待实际部署 |
+| 公开访问验收 | 用户已确认可打开博客；独立自动浏览器访问 Pages 域名曾超时，记录在 site-network.json；不将自动浏览器结果冒充线上交互全部通过 |
+| 第二次部署 | 2026-10-23 09:34:09 +08:00；ef04704ffea0b9b9c4ee99c134f016d06484e5bd；https://github.com/ALaura-chi/hot100-blog/actions/runs/39884660777，build / deploy 均 success |
 | 成功标签 | 待实际部署 |
 
 ## 以后更新
@@ -54,3 +54,9 @@
 - [Astro 内容集合](https://docs.astro.build/en/guides/content-collections/)
 
 工作流采用官方 Astro 部署指南的当前组合：checkout v7、withastro/action v6、deploy-pages v5；另加 setup-java v5 以运行本项目的算法测试。
+
+## 个人草稿功能更新
+
+用户选择仅保存在当前浏览器。新增 100 题笔记 / Java 草稿编辑、自动保存、备份导出和确认恢复；本地 17 项草稿功能测试与 15 项阅读页面回归通过。构建检查同时要求全部 100 个编辑入口和全局编辑器控件存在。个人输入不提交 GitHub，默认名称的导出备份文件也由 `.gitignore` 排除。
+
+此更新仍使用相同的 `main` → Actions → Pages 发布流程。最新工作流可在 [Actions](https://github.com/ALaura-chi/hot100-blog/actions) 查看，使用方式见 `drafts.md`。

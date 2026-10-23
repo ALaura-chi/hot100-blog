@@ -1,3 +1,4 @@
+import { initDrafts } from './drafts';
 const root = document.documentElement;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -70,7 +71,7 @@ function initReading() {
   const scrollPane = document.querySelector<HTMLElement>('.index-scroll');
   const bar = document.querySelector<HTMLElement>('#reading-progress-fill');
   const topButton = document.querySelector<HTMLButtonElement>('#back-to-top');
-  let positions: number[] = [], active = -1, frame = 0;
+  let positions: number[] = [], active = links.findIndex(link=>link.getAttribute('aria-current')==='location'), frame = 0;
   const measure = () => { positions = sections.map(section => section.getBoundingClientRect().top + scrollY); queue(); };
   const update = () => {
     frame = 0;
@@ -133,5 +134,5 @@ function initBackground() {
   resize();
 }
 
-initTheme(); initMenus(); initCopy(); initReading(); initBackground();
+initTheme(); initMenus(); initCopy(); initReading(); initBackground(); initDrafts();
 export {};

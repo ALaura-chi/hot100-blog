@@ -7,4 +7,5 @@ dist/
 .qa-profile/
 .npm-cache/
 *.log
+hot100-drafts-*.json
 .DS_Store

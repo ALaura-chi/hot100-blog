@@ -1,0 +1,82 @@
+{
+  "runAt": "2026-10-23T02:20:20.478Z",
+  "origin": "http://127.0.0.1:4391",
+  "tests": [
+    {
+      "name": "all 100 problems have enabled draft controls; opening does not create a draft",
+      "passed": true
+    },
+    {
+      "name": "notes and edited Java autosave without changing the published example",
+      "passed": true
+    },
+    {
+      "name": "closing immediately flushes pending input",
+      "passed": true
+    },
+    {
+      "name": "refresh immediately flushes the last keystrokes",
+      "passed": true
+    },
+    {
+      "name": "a pending problem accepts independent notes and Java",
+      "passed": true
+    },
+    {
+      "name": "export includes all current records in a versioned backup",
+      "passed": true
+    },
+    {
+      "name": "cleared Java stays empty after reload instead of restoring the example",
+      "passed": true
+    },
+    {
+      "name": "import preview and cancel leave existing records untouched",
+      "passed": true
+    },
+    {
+      "name": "confirming a valid backup restores notes and Java",
+      "passed": true
+    },
+    {
+      "name": "a malformed later record rejects the whole import before any overwrite",
+      "passed": true
+    },
+    {
+      "name": "duplicate problem IDs in a backup are rejected",
+      "passed": true
+    },
+    {
+      "name": "code Tab indents and Escape then Tab leaves the editor",
+      "passed": true
+    },
+    {
+      "name": "same-problem edits in another tab cannot silently overwrite active input",
+      "passed": true
+    },
+    {
+      "name": "quota failure is visible and unsaved input remains exportable",
+      "passed": true
+    },
+    {
+      "name": "blocked storage still permits editing and exporting a draft",
+      "passed": true
+    },
+    {
+      "name": "corrupt stored data is reported without breaking other editors",
+      "passed": true
+    },
+    {
+      "name": "editor produces no upload requests or unhandled browser errors",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "drafts-desktop-light.png",
+    "drafts-mobile-dark.png",
+    "editor-desktop-light.png",
+    "editor-mobile-dark.png"
+  ],
+  "passed": true,
+  "chromiumVersion": "155.0.8059.85"
+}

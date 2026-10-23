@@ -1,5 +1,6 @@
 {
-  "runAt": "2026-10-22T18:40:12.158Z",
+  "runAt": "2026-10-23T02:15:27.374Z",
+  "origin": "http://127.0.0.1:4391",
   "screenshots": [
     "local-1440x900-light.png",
     "local-desktop-dark-middle.png",
@@ -24,6 +25,10 @@
     },
     {
       "name": "copy contains source code only (OS newlines normalized)",
+      "passed": true
+    },
+    {
+      "name": "direct hash URL survives a refresh",
       "passed": true
     },
     {

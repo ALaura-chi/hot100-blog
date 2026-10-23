@@ -22,9 +22,12 @@ for(let i=0;i<100;i++){
   assert.ok(['unstarted','assisted','independent','review'].includes(problem.status),'Invalid status');
   assert.match(problem.leetcode,/^https:\/\/leetcode\.cn\/problems\/[a-z0-9-]+\/$/,'Nonofficial URL');
   assert.ok(mainIds.includes(`problem-${problem.problemId}`),`Missing problem anchor: ${problem.problemId}`);
+  assert.ok(reader.includes(`data-draft-open="${problem.problemId}"`),`Missing draft editor entry: ${problem.problemId}`);
 }
 assert.equal([...reader.matchAll(/data-problem="\d+"/g)].length,100,'Wrong article problem count');
 assert.equal([...reader.matchAll(/data-problem-id="\d+"/g)].length,100,'Wrong index problem count');
+assert.equal([...reader.matchAll(/data-draft-open="\d+"/g)].length,100,'Wrong draft editor count');
+for(const id of ['draft-dialog','draft-notes','draft-java','draft-export','draft-import'])assert.ok(mainIds.includes(id),`Missing draft control: ${id}`);
 assert.equal(mainIds.filter(id=>id.startsWith('category-')).length,17,'Wrong category anchor count');
 const fullExampleNotes=problems.filter(p=>p.noteReady).length;
 for(const id of [1,283,42,200,287])assert.ok(problems.find(p=>p.problemId===id)?.noteReady,`Missing required example note: ${id}`);
@@ -53,6 +56,6 @@ for(const file of htmlFiles){
   }
 }
 for(const file of ['index.html','posts/hot_100/index.html','categories/index.html','about/index.html','404.html','problems.json'])assert.ok(await stat(path.join(dist,file)),`Missing output ${file}`);
-const report={problems:100,categories:17,fullExampleNotes,pages:htmlFiles.length,checkedLinks,checkedAssets,base,passed:true};
+const report={problems:100,categories:17,fullExampleNotes,draftEditors:100,pages:htmlFiles.length,checkedLinks,checkedAssets,base,passed:true};
 await mkdir('docs/checks',{recursive:true});await writeFile('docs/checks/build-verification.json',JSON.stringify(report,null,2)+'\n');
 console.log('PASS: '+JSON.stringify(report));
