@@ -1,6 +1,6 @@
 # GitHub Pages 部署记录
 
-更新时间：2026-10-23。当前状态：本地成品与工作流已准备，尚未声称已经上线。用户已指定使用 **ALaura-chi**；本机已有的 WLCaura 凭据不用于本项目。
+更新时间：2026-10-23。当前状态：本地成品与工作流已准备，尚未声称已经上线。用户指定使用 **ALaura-chi**，已完成浏览器授权并通过 GitHub API 核对账号。
 
 ## 固定配置
 
@@ -16,7 +16,7 @@
 | 目标长文（待部署验证） | `https://alaura-chi.github.io/hot100-blog/posts/hot_100/` |
 | 构建 | Node 24 / npm 11.6.1 / JDK 17，`npm run ci` |
 
-本地初始提交：`1069b73`（Build Hot 100 study blog with Astro）。D 盘独立目录已重新安装 335 个锁定依赖并通过完整检查。设备登录尚未取得授权码；通过用户提供的 7890 代理检查时，GitHub API 可连接，设备登录入口超时。已改用 Git Credential Manager 的浏览器认证流程，等待 ALaura-chi 完成授权。无令牌、密码或临时授权码写入本仓库。
+本地初始提交：`1069b73`（Build Hot 100 study blog with Astro）。D 盘独立目录已重新安装 335 个锁定依赖并通过完整检查。设备登录入口超时后，改用 Git Credential Manager 的浏览器认证流程，成功核对账号为 ALaura-chi。无令牌、密码或临时授权码写入本仓库。
 
 ## 首次发布
 

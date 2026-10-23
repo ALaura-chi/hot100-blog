@@ -20,7 +20,7 @@
 
 依赖版本由 `package-lock.json` 锁定；`.gitignore` 忽略 `node_modules/`、`dist/`、`.astro/`、`.java-classes/`、`.env*` 和临时日志，保留锁文件和验收资料。
 
-本机原有 Git Credential Manager 账号为 WLCaura。该账号与用户指定的账号不一致，不用于本项目推送；发布需要 ALaura-chi 的实际授权。没有修改系统全局 Git 身份或代理配置。
+发布账号固定为用户指定的 ALaura-chi，已通过浏览器授权并使用 GitHub API 核对身份。没有修改系统全局 Git 身份或代理配置。
 
 如当前终端需要通过用户已有 7890 HTTP/Mixed 代理联网，可在该终端设置：
 
