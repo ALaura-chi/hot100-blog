@@ -60,7 +60,7 @@
 | G04 | npm run ci 全流程成功；checks/ci.txt |
 | G05～G06 | 生产预览、直接路由、三视口两主题；browser-qa.json 和 screenshots/ |
 | G07～G08 | 逐项视觉对照、键盘、Console/资源网络验收；acceptance.md |
-| G09 | 全部 100 链接的数据、域名、格式和去重通过；仅抽查三题官方页面，全部外链逐页校对尚未完成 |
+| G09 | 100 链接结构核验通过；尝试读取全部官方页面及官方 description 子路由，96 项题号/题名匹配、1 项题名存在同义简称、3 项读取超时；external-links.json 逐项记录，不将超时误报为失效 |
 | G10 | 本机加载/连续滚动抽样与减少动效测试；extra-qa.json，记录实测局限 |
 
 ## H、I：发布与维护
